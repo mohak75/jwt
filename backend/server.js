@@ -8,7 +8,7 @@ const app = express();
 const PORT = 5000;
 const SECRET_KEY = process.env.SECRET_KEY;
 
-// Hardcoded users for demonstration purposes
+
 const users = [
   { username: 'user1', password: 'password1' },
   { username: 'user2', password: 'password2' }
@@ -20,7 +20,6 @@ app.use(cors());
 app.post('/login', (req, res) => {
   const { username, password } = req.body;
 
-  // Find user in the hardcoded list
   const user = users.find(u => u.username === username && u.password === password);
 
   if (user) {
@@ -31,7 +30,7 @@ app.post('/login', (req, res) => {
   }
 });
 
-// Secure route
+
 app.get('/secure', (req, res) => {
   const authHeader = req.headers.authorization;
   if (authHeader) {
